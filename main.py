@@ -2,6 +2,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("My Window")
+root.iconbitmap("favicon.ico")
 root.geometry("640x480")
 
 # root.grid_rowconfigure(0, weight=1)
