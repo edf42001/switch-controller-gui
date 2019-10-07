@@ -1,5 +1,5 @@
 import tkinter as tk
-from Frames import ConfigFrame, InstructionsFrame
+from Frames import ConfigFrame, InstructionsFrame, WiringFrame
 
 # Variables user can select on the GUI
 num_switches = 1  # Number of switches in the toy
@@ -7,19 +7,20 @@ operation_type = "Sequential"  # Method microcontroller uses to control switch o
 
 
 # Handles when the number of switches parameter is changed
-def handle_num_switches_choice(value):
-    num_switches = int(value)
-    print(num_switches)
+def handle_value_change(values):
+    switch_type = values["switch_type"]
+    mode = values["mode"]
+    num_switches = int(values['num_switches'])
+    pulse_width = int(values["pulse_width"])
+    max_time = int(values["max_time"])
+    pull_up_time = int(values["pull_up_time"])
+    switch_test_time = int(values["switch_test_time"])
 
-
-# Handles when the operation type parameter is changed
-def handle_operation_type_choice(value):
-    operation_type = value
-    print(operation_type)
+    print(num_switches, pulse_width, max_time)
 
 
 # Function that runs when the "Flash Firmware" button is pressed
-def handle_flash_button():
+def handle_program_button():
     print("button pressed")
 
 
@@ -35,13 +36,12 @@ root.minsize(int(root_width/2), int(root_height/2))
 
 
 # Create a frame for the configuration settings and put it to the left
-config_frame = ConfigFrame(root, handle_num_switches_choice, handle_operation_type_choice, handle_flash_button)
+config_frame = ConfigFrame(root, handle_value_change, handle_program_button)
 instructions_frame = InstructionsFrame(root)
+wiring_frame = WiringFrame(root)
 
-wiring_frame = tk.Frame(root, background="#f0f0f0")
-
-root.grid_rowconfigure(0, weight=5)
-root.grid_rowconfigure(1, weight=3)
+root.grid_rowconfigure(0, weight=3)
+root.grid_rowconfigure(1, weight=2)
 root.grid_columnconfigure(0, weight=3)
 root.grid_columnconfigure(1, weight=2)
 
