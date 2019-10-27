@@ -1,0 +1,1 @@
+C:\Users\edf42001\Anaconda3\envs\replaykids\Scripts\pyuic5.exe ReplayKidsTest.ui -o QTGui.py

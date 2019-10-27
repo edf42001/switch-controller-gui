@@ -1,6 +1,6 @@
-import tkinter as tk
-from Frames import ConfigFrame, InstructionsFrame, WiringFrame
-
+from PyQt5 import QtWidgets
+from CustomMainWindow import CustomMainWindow
+from QTGui import Ui_SwitchControllerWindow
 # Variables user can select on the GUI
 num_switches = 1  # Number of switches in the toy
 operation_type = "Sequential"  # Method microcontroller uses to control switch outputs
@@ -24,29 +24,14 @@ def handle_program_button():
     print("button pressed")
 
 
-root_width, root_height = 1280, 657
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    SwitchControllerWindow = CustomMainWindow()
+    ui = Ui_SwitchControllerWindow()
+    ui.setupUi(SwitchControllerWindow)
+    SwitchControllerWindow.show()
 
-root = tk.Tk()
-root.title("Replay For Kids Circuit Programmer")
-root.iconbitmap("favicon.ico")
+    SwitchControllerWindow.ui = ui
 
-
-root.geometry("{}x{}".format(root_width, root_height))
-root.minsize(int(root_width/2), int(root_height/2))
-
-
-# Create a frame for the configuration settings and put it to the left
-config_frame = ConfigFrame(root, handle_value_change, handle_program_button)
-instructions_frame = InstructionsFrame(root)
-wiring_frame = WiringFrame(root)
-
-root.grid_rowconfigure(0, weight=3)
-root.grid_rowconfigure(1, weight=2)
-root.grid_columnconfigure(0, weight=3)
-root.grid_columnconfigure(1, weight=2)
-
-config_frame.grid(row=1, column=1, sticky="nsew")
-instructions_frame.grid(row=0, column=1, sticky="nsew")
-wiring_frame.grid(row=0, column=0, rowspan=2, sticky="nsew")
-
-root.mainloop()  # Start the GUI
+    sys.exit(app.exec_())
