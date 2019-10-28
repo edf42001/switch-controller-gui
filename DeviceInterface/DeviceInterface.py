@@ -1,14 +1,19 @@
-def modify_hex_firmware_file(filename, args, start_row=2, start_col=9, length=16):
+import subprocess
+import os
+
+
+def modify_hex_firmware_file(values, start_row=2, start_col=9, length=16):
     """ Function to modify the constant configuration values in a compiled hex file"""
 
-    lines = []
+    filename = "DeviceInterface/GUIModifiedFirmware.hex"
 
+    lines = []
     for line in open(filename, 'r'):  # Read the file
         lines.append(line)
 
     # Convert the configuration values to hex and combine them in a string
     consts = ""
-    for i, value in enumerate(args.values()):
+    for i, value in enumerate(values):
         if value > 255 or value < 0:
             raise Exception("Argument value out of range for a byte")
 
@@ -38,6 +43,22 @@ def modify_hex_firmware_file(filename, args, start_row=2, start_col=9, length=16
             f.write(line)
 
 
-filename = "../CodeComposerStudioTest/Test/ReplayForKidsTest.hex"
-args = dict(h=2, y=123, e=12)
-modify_hex_firmware_file(filename, args)
+def flash_firmware():
+    flasher_path = "DeviceInterface/ProgramSwitchController.bat"
+    firmware_path = "DeviceInterface/GUIModifiedFirmware.hex"
+    flasher_path = os.path.abspath(flasher_path)
+
+    firmware_path = os.path.abspath(firmware_path)
+    p = subprocess.Popen([flasher_path, firmware_path], stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                         universal_newlines=True)
+    print("Flashing Firmware")
+    while True:
+        output = p.stdout.readline()
+        if output == '' and p.poll() is not None:
+            break
+        print(output[:-1])
+
+        if output.startswith("*/"):
+            break
+
+    print("Finished")
