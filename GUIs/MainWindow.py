@@ -14,6 +14,13 @@ class Ui_SwitchControllerWindow(object):
     def setupUi(self, SwitchControllerWindow):
         SwitchControllerWindow.setObjectName("SwitchControllerWindow")
         SwitchControllerWindow.resize(282, 181)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(SwitchControllerWindow.sizePolicy().hasHeightForWidth())
+        SwitchControllerWindow.setSizePolicy(sizePolicy)
+        SwitchControllerWindow.setMaximumSize(QtCore.QSize(282, 181))
+        SwitchControllerWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         icon = QtGui.QIcon.fromTheme("favicon")
         SwitchControllerWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(SwitchControllerWindow)

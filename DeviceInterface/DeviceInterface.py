@@ -51,14 +51,14 @@ def flash_firmware():
     firmware_path = os.path.abspath(firmware_path)
     p = subprocess.Popen([flasher_path, firmware_path], stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                          universal_newlines=True)
-    print("Flashing Firmware")
+
     while True:
         output = p.stdout.readline()
         if output == '' and p.poll() is not None:
             break
-        print(output[:-1])
+
+        yield output[:-1]
 
         if output.startswith("*/"):
+            # yield error_code()
             break
-
-    print("Finished")

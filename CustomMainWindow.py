@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
-from DeviceInterface import DeviceInterface
+from CustomUploadFirmwareWindow import CustomUploadFirmwareWindow
+from GUIs.UploadFirmwareWindow import Ui_UploadFirmwareWindow
 
 
 class CustomMainWindow(QtWidgets.QMainWindow):
@@ -8,15 +9,14 @@ class CustomMainWindow(QtWidgets.QMainWindow):
 
         self.ui = None
         self.defaults = []
+        self.values = []
+        self.upload_firmware_window = None
 
     def program_button_clicked(self):
-        values = self._get_values()
+        self.values = self._get_values()
 
-        print(values)
-
-        DeviceInterface.modify_hex_firmware_file(values)
-        DeviceInterface.flash_firmware()
-
+        self.open_upload_firmware_window()
+        self.upload_firmware_window.flash_firmware(self.values)
 
     def defaults_button_clicked(self):
         self.ui.num_outputs.setCurrentIndex(self.defaults[0] - 1)
@@ -26,7 +26,7 @@ class CustomMainWindow(QtWidgets.QMainWindow):
         self.ui.pull_up_time.setValue(self.defaults[4])
         self.ui.switch_test_time.setValue(self.defaults[5])
 
-    """ Functions below here are not called by events happening in GUI"""
+    """ Functions below here are not activated by events happening in GUI"""
 
     def _get_values(self):
         num_outputs = self.ui.num_outputs.currentIndex() + 1
@@ -41,3 +41,19 @@ class CustomMainWindow(QtWidgets.QMainWindow):
 
     def store_defaults(self):
         self.defaults = self._get_values()
+
+    def open_upload_firmware_window(self):
+        ui = Ui_UploadFirmwareWindow()
+        UploadFirmwareWindow = CustomUploadFirmwareWindow(parent=self)
+        ui.setupUi(UploadFirmwareWindow)
+        UploadFirmwareWindow.ui = ui
+
+        self.upload_firmware_window = UploadFirmwareWindow
+
+        position = self.geometry()
+
+        self.upload_firmware_window.setGeometry(max(position.x()-350, 0), max(position.y()-100, 0), 1200, 600)
+        self.upload_firmware_window.show()
+
+
+

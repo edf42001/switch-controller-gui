@@ -10,6 +10,21 @@
     <height>181</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>282</width>
+    <height>181</height>
+   </size>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>Switch Controller Programmer</string>
   </property>
@@ -403,8 +418,8 @@ be configured in increments of ~100 milliseconds</string>
    <slot>program_button_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>345</x>
-     <y>284</y>
+     <x>275</x>
+     <y>156</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>

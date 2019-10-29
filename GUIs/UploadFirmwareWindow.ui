@@ -2,35 +2,71 @@
 <ui version="4.0">
  <class>UploadFirmwareWindow</class>
  <widget class="QMainWindow" name="UploadFirmwareWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>282</width>
-    <height>181</height>
-   </rect>
+  <property name="baseSize">
+   <size>
+    <width>1000</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Uploading Firmware...</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
      <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAsNeeded</enum>
       </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
       <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="lineWrapMode">
+       <enum>QPlainTextEdit::NoWrap</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
       </property>
-      <property name="plainText">
-       <string>Hello I am uploading firmware niw yaehaeas\\
-adsa</string>
-      </property>
      </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1">
+      <item>
+       <widget class="QLabel" name="message_label">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Uploading Firmware...</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="close_button">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Close</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -39,7 +75,7 @@ adsa</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>282</width>
+     <width>329</width>
      <height>18</height>
     </rect>
    </property>
@@ -49,18 +85,18 @@ adsa</string>
  <resources/>
  <connections>
   <connection>
-   <sender>UploadFirmwareWindow</sender>
-   <signal>terminal_line_recieved(QString)</signal>
-   <receiver>plainTextEdit</receiver>
-   <slot>appendPlainText(QString)</slot>
+   <sender>close_button</sender>
+   <signal>clicked()</signal>
+   <receiver>UploadFirmwareWindow</receiver>
+   <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>19</y>
+     <x>279</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
-     <x>122</x>
-     <y>60</y>
+     <x>68</x>
+     <y>119</y>
     </hint>
    </hints>
   </connection>
