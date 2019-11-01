@@ -7,19 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>282</width>
-    <height>181</height>
+    <height>204</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <property name="maximumSize">
    <size>
-    <width>282</width>
-    <height>181</height>
+    <width>800</width>
+    <height>500</height>
    </size>
   </property>
   <property name="contextMenuPolicy">
@@ -28,51 +22,41 @@
   <property name="windowTitle">
    <string>Switch Controller Programmer</string>
   </property>
-  <property name="windowIcon">
-   <iconset theme="favicon">
-    <normaloff>.</normaloff>.</iconset>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="6" column="0">
-     <widget class="QLabel" name="label_6">
+  <widget class="QWidget" name="widget">
+   <layout class="QGridLayout" columnstretch="0,0,0,0,0">
+    <item row="8" column="1">
+     <widget class="QSpinBox" name="pull_up_time">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="font">
        <font>
         <pointsize>8</pointsize>
        </font>
       </property>
-      <property name="text">
-       <string>Switch Test Time:</string>
+      <property name="minimum">
+       <number>1</number>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <property name="maximum">
+       <number>255</number>
       </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Output Mode:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <property name="value">
+       <number>20</number>
       </property>
      </widget>
     </item>
-    <item row="3" column="2">
-     <widget class="QLabel" name="label_11">
+    <item row="2" column="2">
+     <widget class="QLabel" name="label_7">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
        </font>
       </property>
       <property name="toolTip">
-       <string>The number of switches you want to control.</string>
+       <string>The number of outputs in the sequence.</string>
       </property>
       <property name="text">
        <string>?</string>
@@ -82,7 +66,54 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
+    <item row="4" column="2">
+     <widget class="QLabel" name="label_8">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>One-shot: Every push turns on the next output in sequence for a short
+    pulse.
+Retriggerable one-shot: Every push turns on the next output in
+    sequence as long as the push button is held.
+On-off: The push turns on the next output in sequence and keeps it on
+    until the switch is released and pushed again.</string>
+      </property>
+      <property name="text">
+       <string>?</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QSpinBox" name="switch_test_time">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>5</number>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
      <widget class="QComboBox" name="num_outputs">
       <property name="font">
        <font>
@@ -91,6 +122,9 @@
       </property>
       <property name="toolTip">
        <string/>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
       <item>
        <property name="text">
@@ -134,35 +168,26 @@
       </item>
      </widget>
     </item>
-    <item row="6" column="1">
-     <widget class="QSpinBox" name="switch_test_time">
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>255</number>
-      </property>
-      <property name="value">
-       <number>5</number>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_5">
+    <item row="9" column="2">
+     <widget class="QLabel" name="label_12">
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
+      <property name="toolTip">
+       <string> The switch test time plus the resistor pull-up time is the time
+between tests of a closed switch in increments of ~100 milliseconds.</string>
+      </property>
       <property name="text">
-       <string>Resistor Pull Up Time:</string>
+       <string>?</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="6" column="0">
      <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
@@ -177,37 +202,16 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="2">
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Max On Time:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QLabel" name="label_8">
+    <item row="6" column="2">
+     <widget class="QLabel" name="label_11">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
        </font>
       </property>
       <property name="toolTip">
-       <string>The number of switches you want to control.</string>
+       <string>The one shot pulse width can be configured in increments of ~100
+milliseconds.</string>
       </property>
       <property name="text">
        <string>?</string>
@@ -217,125 +221,26 @@
       </property>
      </widget>
     </item>
-    <item row="6" column="4">
-     <widget class="QPushButton" name="program_button">
+    <item row="3" column="2">
+     <widget class="QLabel" name="label_14">
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Normally Open (N.O.) - triggered when the contact closes.
+Normally Closed (N.C.) - triggered when the contact opens.</string>
+      </property>
       <property name="text">
-       <string>Program Circuit</string>
+       <string>?</string>
       </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QSpinBox" name="pull_up_time">
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>255</number>
-      </property>
-      <property name="value">
-       <number>20</number>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QSpinBox" name="pulse_width">
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>255</number>
-      </property>
-      <property name="value">
-       <number>1</number>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QSpinBox" name="max_on_time">
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>255</number>
-      </property>
-      <property name="value">
-       <number>100</number>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="2">
-     <widget class="QLabel" name="label_12">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>The number of switches you want to control.</string>
-      </property>
-      <property name="text">
-       <string>?</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="2">
-     <widget class="QLabel" name="label_9">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>The number of switches you want to control.</string>
-      </property>
-      <property name="text">
-       <string>?</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QLabel" name="label_10">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>To save the batteries, the maximum time an output can remain on can
-be configured in increments of ~100 milliseconds</string>
-      </property>
-      <property name="text">
-       <string>?</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="4">
-     <widget class="QPushButton" name="pushButton">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Restore Defaults</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
      <widget class="QComboBox" name="output_mode">
       <property name="font">
        <font>
@@ -352,17 +257,246 @@ be configured in increments of ~100 milliseconds</string>
       </item>
       <item>
        <property name="text">
-        <string>On/Off</string>
+        <string>Retriggerable</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Retriggerable</string>
+        <string>On/Off</string>
        </property>
       </item>
      </widget>
     </item>
-    <item row="0" column="0">
+    <item row="3" column="1">
+     <widget class="QComboBox" name="switch_type">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string/>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Normally Open</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Normally Closed</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QSpinBox" name="pulse_width">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>1</number>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Output Mode:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Resistor Pull Up Time:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Switch Test Time:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="4">
+     <widget class="QPushButton" name="pushButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Restore Defaults</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QSpinBox" name="max_on_time">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>100</number>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QLabel" name="label_10">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>To save the batteries, the maximum time an output can remain on can
+be configured in increments of ~100 milliseconds.</string>
+      </property>
+      <property name="text">
+       <string>?</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Max On Time:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="4">
+     <widget class="QPushButton" name="program_button">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Program Circuit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="3">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="2">
+     <widget class="QLabel" name="label_9">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>The time the resistor is pulled up before the closed switch state can
+be tested. Time in ~.1 milliseconds.</string>
+      </property>
+      <property name="text">
+       <string>?</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_13">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Switch Type:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
      <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
@@ -374,24 +508,6 @@ be configured in increments of ~100 milliseconds</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLabel" name="label_7">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>The number of switches you want to control.</string>
-      </property>
-      <property name="text">
-       <string>?</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
@@ -427,9 +543,25 @@ be configured in increments of ~100 milliseconds</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SwitchControllerWindow</receiver>
+   <slot>defaults_button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>238</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>program_button_clicked()</slot>
-  <slot>spinbox_edited()</slot>
+  <slot>defaults_button_clicked()</slot>
  </slots>
 </ui>

@@ -14,10 +14,14 @@ class CustomUploadFirmwareWindow(QtWidgets.QMainWindow):
 
         DeviceInterface.modify_hex_firmware_file(values)
 
-        for line in DeviceInterface.flash_firmware():
-            self.ui.plainTextEdit.appendPlainText(line)
-            QtWidgets.QApplication.processEvents()
+        message = ""
 
-            time.sleep(0.02)
+        for is_line, data in DeviceInterface.flash_firmware():
+            if is_line:
+                self.ui.plainTextEdit.appendPlainText(data)
+                QtWidgets.QApplication.processEvents()
+                time.sleep(0.02)
+            else:
+                message = data
 
-        self.ui.message_label.setText("Success! Done Uploading")
+        self.ui.message_label.setText(message)

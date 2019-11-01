@@ -2,7 +2,7 @@ import subprocess
 import os
 
 
-def modify_hex_firmware_file(values, start_row=2, start_col=9, length=16):
+def modify_hex_firmware_file(values, start_row=23, start_col=9, length=16):
     """ Function to modify the constant configuration values in a compiled hex file"""
 
     filename = "DeviceInterface/GUIModifiedFirmware.hex"
@@ -52,13 +52,24 @@ def flash_firmware():
     p = subprocess.Popen([flasher_path, firmware_path], stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                          universal_newlines=True)
 
+    fet_disconnected = False
+    cant_find_flasher = False
+
     while True:
         output = p.stdout.readline()
         if output == '' and p.poll() is not None:
             break
 
-        yield output[:-1]
+        yield True, output[:-1]
 
-        if output.startswith("*/"):
-            # yield error_code()
-            break
+        if output.startswith("* Couldn't find any connected USB FETs!"):
+            fet_disconnected = True
+        elif output.startswith("The system cannot find the") or output.startswith("'MSP430Flasher.exe' is not"):
+            cant_find_flasher = True
+
+    if fet_disconnected:
+        yield False, "Error: Please Connect USB And Try Again"
+    elif cant_find_flasher:
+        yield False, "Error: Please Install MSP430Flasher And Try Again"
+    else:
+        yield False, "Success! Done Uploading"

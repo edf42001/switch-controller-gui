@@ -13,6 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_UploadFirmwareWindow(object):
     def setupUi(self, UploadFirmwareWindow):
         UploadFirmwareWindow.setObjectName("UploadFirmwareWindow")
+        UploadFirmwareWindow.resize(172, 127)
         UploadFirmwareWindow.setBaseSize(QtCore.QSize(1000, 500))
         self.centralwidget = QtWidgets.QWidget(UploadFirmwareWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -20,6 +21,7 @@ class Ui_UploadFirmwareWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
         font = QtGui.QFont()
+        font.setFamily("Lucida Sans Typewriter")
         font.setPointSize(8)
         self.plainTextEdit.setFont(font)
         self.plainTextEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
@@ -49,7 +51,7 @@ class Ui_UploadFirmwareWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
         UploadFirmwareWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(UploadFirmwareWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 329, 18))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 172, 18))
         self.menubar.setObjectName("menubar")
         UploadFirmwareWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(UploadFirmwareWindow)

@@ -11,6 +11,7 @@ def my_exception_hook(exctype, value, traceback):
     sys._excepthook(exctype, value, traceback)
     sys.exit(1)
 
+
 if __name__ == "__main__":
     # Back up the reference to the exceptionhook
     sys._excepthook = sys.excepthook

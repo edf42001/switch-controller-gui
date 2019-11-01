@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>UploadFirmwareWindow</class>
  <widget class="QMainWindow" name="UploadFirmwareWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>172</width>
+    <height>127</height>
+   </rect>
+  </property>
   <property name="baseSize">
    <size>
     <width>1000</width>
@@ -17,6 +25,7 @@
      <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="font">
        <font>
+        <family>Lucida Sans Typewriter</family>
         <pointsize>8</pointsize>
        </font>
       </property>
@@ -75,7 +84,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>329</width>
+     <width>172</width>
      <height>18</height>
     </rect>
    </property>
