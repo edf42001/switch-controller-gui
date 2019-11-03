@@ -4,6 +4,7 @@ from GUIs.MainWindow import Ui_SwitchControllerWindow
 import sys
 
 
+# Print errors that QT was not printing
 def my_exception_hook(exctype, value, traceback):
     # Print the error and traceback
     # print(exctype, value, traceback)

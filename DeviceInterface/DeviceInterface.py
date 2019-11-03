@@ -54,6 +54,7 @@ def flash_firmware():
 
     fet_disconnected = False
     cant_find_flasher = False
+    plugged_in_backwards = False
 
     while True:
         output = p.stdout.readline()
@@ -66,10 +67,14 @@ def flash_firmware():
             fet_disconnected = True
         elif output.startswith("The system cannot find the") or output.startswith("'MSP430Flasher.exe' is not"):
             cant_find_flasher = True
+        elif output.startswith("# ERROR: Could not find device"):
+            plugged_in_backwards = True
 
     if fet_disconnected:
         yield False, "Error: Please Connect USB And Try Again"
     elif cant_find_flasher:
         yield False, "Error: Please Install MSP430Flasher And Try Again"
+    elif plugged_in_backwards:
+        yield False, "Error: Try Flipping The Circuit/Development Board Connection"
     else:
         yield False, "Success! Done Uploading"
