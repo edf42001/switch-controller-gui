@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Images">
+    <file>Images/favicon.ico</file>
+    <file>Images/launchpad-mspexp430f5529lp-012.jpg</file>
+  </qresource>
+</RCC>

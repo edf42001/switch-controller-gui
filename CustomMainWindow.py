@@ -14,8 +14,6 @@ class CustomMainWindow(QtWidgets.QMainWindow):
 
         self.setFocus()  # For some reason switch_test_time was getting the focus
 
-        self.setWindowIcon(QtGui.QIcon('favicon.ico'))
-
     def program_button_clicked(self):
         self.values = self._get_values()
 
@@ -58,7 +56,7 @@ class CustomMainWindow(QtWidgets.QMainWindow):
 
         position = self.geometry()
 
-        self.upload_firmware_window.setGeometry(max(position.x()-350, 0), max(position.y()-100, 0), 1200, 600)
+        self.upload_firmware_window.setGeometry(max(position.x()-50, 0), max(position.y()-100, 0), 1200, 600)
         self.upload_firmware_window.show()
 
 
