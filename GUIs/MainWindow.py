@@ -97,7 +97,7 @@ class Ui_SwitchControllerWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.textBrowser.sizePolicy().hasHeightForWidth())
         self.textBrowser.setSizePolicy(sizePolicy)
-        self.textBrowser.setMinimumSize(QtCore.QSize(510, 300))
+        self.textBrowser.setMinimumSize(QtCore.QSize(510, 340))
         self.textBrowser.setBaseSize(QtCore.QSize(1000, 0))
         self.textBrowser.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -282,12 +282,12 @@ class Ui_SwitchControllerWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">Instructions</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">1) Select configuration values for the toy\'s switch controller</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">2) Connect the TI Lanchpad and switch controller as shown</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/Images/Images/launchpad-mspexp430f5529lp-012.jpg\" /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/Images/Images/LaunchpadSwitchController.jpg\" /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">3) Click the &quot;Program Circuit&quot; button</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">* To restore default values click the &quot;Restore Defaults&quot; button</span></p></body></html>"))
@@ -297,7 +297,7 @@ class Ui_SwitchControllerWindow(object):
         self.program_button.setText(_translate("SwitchControllerWindow", "Program Circuit"))
         self.label_4.setText(_translate("SwitchControllerWindow", "Max On Time:"))
         self.label_3.setText(_translate("SwitchControllerWindow", "Pulse Width:"))
-        self.label_12.setToolTip(_translate("SwitchControllerWindow", " The switch test time plus the resistor pull-up time is the time\n"
+        self.label_12.setToolTip(_translate("SwitchControllerWindow", "The switch test time plus the resistor pull-up time is the time\n"
 "between tests of a closed switch in increments of ~100 milliseconds."))
         self.label_12.setText(_translate("SwitchControllerWindow", "?"))
         self.label_11.setToolTip(_translate("SwitchControllerWindow", "The one shot pulse width can be configured in increments of ~100\n"
@@ -330,6 +330,6 @@ class Ui_SwitchControllerWindow(object):
         self.num_outputs.setItemText(7, _translate("SwitchControllerWindow", "8"))
         self.pushButton.setText(_translate("SwitchControllerWindow", "Restore Defaults"))
         self.label_5.setText(_translate("SwitchControllerWindow", "Resistor Pull Up Time:"))
-        self.label_7.setToolTip(_translate("SwitchControllerWindow", "The number of outputs in the sequence."))
+        self.label_7.setToolTip(_translate("SwitchControllerWindow", "The number of switches to control in the sequence."))
         self.label_7.setText(_translate("SwitchControllerWindow", "?"))
 import resources_rc

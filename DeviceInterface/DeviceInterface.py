@@ -75,6 +75,6 @@ def flash_firmware():
     elif cant_find_flasher:
         yield False, "Error: Please Install MSP430Flasher And Try Again"
     elif plugged_in_backwards:
-        yield False, "Error: Try Flipping The Circuit/Development Board Connection"
+        yield False, "Error: Please Check The Switch Controller/Launchpad Board Connection"
     else:
         yield False, "Success! Done Uploading"
