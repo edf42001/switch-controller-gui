@@ -1,6 +1,8 @@
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets
 from CustomUploadFirmwareWindow import CustomUploadFirmwareWindow
 from GUIs.UploadFirmwareWindow import Ui_UploadFirmwareWindow
+import subprocess
+import os.path
 
 
 class CustomMainWindow(QtWidgets.QMainWindow):
@@ -29,6 +31,13 @@ class CustomMainWindow(QtWidgets.QMainWindow):
         self.ui.pull_up_time.setValue(self.defaults[5])
         self.ui.switch_test_time.setValue(self.defaults[6])
 
+    def menu_item_clicked(self, action):
+        item = action.text()
+        path = os.path.join("Resources/Tutorials", item + ".pdf")
+        path = os.path.abspath(path)
+
+        subprocess.Popen([path], shell=True)  # Open the PDF in a web browse
+
     """ Functions below here are not activated by events happening in GUI"""
 
     def _get_values(self):
@@ -47,11 +56,13 @@ class CustomMainWindow(QtWidgets.QMainWindow):
         self.defaults = self._get_values()
 
     def open_upload_firmware_window(self):
+        if self.upload_firmware_window:  # Close the window if it's already open
+            self.upload_firmware_window.close()
+
         ui = Ui_UploadFirmwareWindow()
         UploadFirmwareWindow = CustomUploadFirmwareWindow(parent=self)
         ui.setupUi(UploadFirmwareWindow)
         UploadFirmwareWindow.ui = ui
-
         self.upload_firmware_window = UploadFirmwareWindow
 
         position = self.geometry()

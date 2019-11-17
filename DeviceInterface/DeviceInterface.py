@@ -1,13 +1,11 @@
 import subprocess
-import os
-import sys
 from DeviceInterface.exec_utils import subprocess_args, resource_path
 
 
 def modify_hex_firmware_file(values, start_row=23, start_col=9, length=16):
     """ Function to modify the constant configuration values in a compiled hex file"""
 
-    filename = resource_path("DeviceInterface/GUIModifiedFirmware.hex")
+    filename = resource_path("Resources/GUIModifiedFirmware.hex")
 
     lines = []
     for line in open(filename, 'r'):  # Read the file
@@ -46,8 +44,8 @@ def modify_hex_firmware_file(values, start_row=23, start_col=9, length=16):
 
 
 def flash_firmware():
-    flasher_path = resource_path("DeviceInterface/ProgramSwitchController.bat")
-    firmware_path = resource_path("DeviceInterface/GUIModifiedFirmware.hex")
+    flasher_path = resource_path("Resources/ProgramSwitchController.bat")
+    firmware_path = resource_path("Resources/GUIModifiedFirmware.hex")
 
     p = subprocess.Popen([flasher_path, firmware_path], **subprocess_args(), universal_newlines=True)
 

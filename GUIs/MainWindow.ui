@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>811</width>
-    <height>348</height>
+    <height>388</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -588,8 +588,54 @@ be configured in increments of ~100 milliseconds.</string>
      <height>18</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <widget class="QMenu" name="menuWiring">
+     <property name="title">
+      <string>Wiring</string>
+     </property>
+     <addaction name="actionGeneral_2"/>
+     <addaction name="actionAdvanced_Info_2"/>
+     <addaction name="actionRound_Toy_Thing"/>
+    </widget>
+    <addaction name="actionGeneral"/>
+    <addaction name="menuWiring"/>
+   </widget>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionGeneral">
+   <property name="text">
+    <string>Using This Program</string>
+   </property>
+  </action>
+  <action name="actionGeneral_2">
+   <property name="text">
+    <string>General Instructions</string>
+   </property>
+  </action>
+  <action name="actionRound_Toy_Thing">
+   <property name="text">
+    <string>Dance and Move BeatBo</string>
+   </property>
+  </action>
+  <action name="actionRoll_Along_Turtle">
+   <property name="text">
+    <string>Roll Along Turtle</string>
+   </property>
+  </action>
+  <action name="actionAdvanced_Info">
+   <property name="text">
+    <string>Advanced Info</string>
+   </property>
+  </action>
+  <action name="actionAdvanced_Info_2">
+   <property name="text">
+    <string>Advanced Info</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="resources.qrc"/>
@@ -602,8 +648,8 @@ be configured in increments of ~100 milliseconds.</string>
    <slot>program_button_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>275</x>
-     <y>156</y>
+     <x>290</x>
+     <y>351</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -618,8 +664,8 @@ be configured in increments of ~100 milliseconds.</string>
    <slot>defaults_button_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>238</x>
-     <y>124</y>
+     <x>290</x>
+     <y>306</y>
     </hint>
     <hint type="destinationlabel">
      <x>271</x>
@@ -627,9 +673,26 @@ be configured in increments of ~100 milliseconds.</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>menubar</sender>
+   <signal>triggered(QAction*)</signal>
+   <receiver>SwitchControllerWindow</receiver>
+   <slot>menu_item_clicked(QAction*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>9</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>255</x>
+     <y>23</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>program_button_clicked()</slot>
   <slot>defaults_button_clicked()</slot>
+  <slot>menu_item_clicked(QAction*)</slot>
  </slots>
 </ui>

@@ -1,12 +1,14 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from DeviceInterface import DeviceInterface
 import time
+
 
 class CustomUploadFirmwareWindow(QtWidgets.QMainWindow):
 
     def __init__(self, parent=None):
         super().__init__(parent)
 
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
         self.ui = None
 
     def flash_firmware(self, values):
@@ -25,3 +27,6 @@ class CustomUploadFirmwareWindow(QtWidgets.QMainWindow):
                 message = data
 
         self.ui.message_label.setText(message)
+
+    def closeEvent(self, event):
+        self.parent().upload_firmware_window = None  # Remove parent's reference when closed
