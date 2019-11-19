@@ -334,8 +334,8 @@ class Ui_SwitchControllerWindow(object):
 "On-off: The push turns on the next output in sequence and keeps it on\n"
 "    until the switch is released and pushed again."))
         self.label_8.setText(_translate("SwitchControllerWindow", "?"))
-        self.label_14.setToolTip(_translate("SwitchControllerWindow", "Normally Open (N.O.) - triggered when the contact closes.\n"
-"Normally Closed (N.C.) - triggered when the contact opens."))
+        self.label_14.setToolTip(_translate("SwitchControllerWindow", "Normally Open (N.O.) - The connection is normally open and closes when the switch is pushed\n"
+"Normally Closed (N.C.) - The connection is normally closed and opens when the switch is pushed"))
         self.label_14.setText(_translate("SwitchControllerWindow", "?"))
         self.label_10.setToolTip(_translate("SwitchControllerWindow", "To save the batteries, the maximum time an output can remain on can\n"
 "be configured in increments of ~100 milliseconds."))

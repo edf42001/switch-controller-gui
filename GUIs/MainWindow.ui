@@ -388,8 +388,8 @@ On-off: The push turns on the next output in sequence and keeps it on
        </font>
       </property>
       <property name="toolTip">
-       <string>Normally Open (N.O.) - triggered when the contact closes.
-Normally Closed (N.C.) - triggered when the contact opens.</string>
+       <string>Normally Open (N.O.) - The connection is normally open and closes when the switch is pushed
+Normally Closed (N.C.) - The connection is normally closed and opens when the switch is pushed</string>
       </property>
       <property name="text">
        <string>?</string>

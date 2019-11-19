@@ -1,11 +1,12 @@
 import subprocess
+import os.path
 from DeviceInterface.exec_utils import subprocess_args, resource_path
 
 
 def modify_hex_firmware_file(values, start_row=23, start_col=9, length=16):
     """ Function to modify the constant configuration values in a compiled hex file"""
 
-    filename = resource_path("Resources/GUIModifiedFirmware.hex")
+    filename = "Resources/GUIModifiedFirmware.hex"  # get file path
 
     lines = []
     for line in open(filename, 'r'):  # Read the file
@@ -43,35 +44,43 @@ def modify_hex_firmware_file(values, start_row=23, start_col=9, length=16):
             f.write(line)
 
 
-def flash_firmware():
-    flasher_path = resource_path("Resources/ProgramSwitchController.bat")
-    firmware_path = resource_path("Resources/GUIModifiedFirmware.hex")
+def flash_firmware():  # flashes firmware to device by running batch file that calls an executable flasher
+    flasher_path = os.path.abspath("Resources/ProgramSwitchController.bat")  # path to flash firmware bat file
+    firmware_path = os.path.abspath("Resources/GUIModifiedFirmware.hex")  # path to firmware
 
+    # If Resources files are to be stored in the exe instead of in the same folder as the exe
+    # flasher_path = resource_path("Resources/ProgramSwitchController.bat")  # path to flash firmware bat file
+    # firmware_path = resource_path("Resources/GUIModifiedFirmware.hex")  # path to firmware
+
+    # flash firmware, pass file as parameter
     p = subprocess.Popen([flasher_path, firmware_path], **subprocess_args(), universal_newlines=True)
 
-    fet_disconnected = False
+    fet_disconnected = False  # possible errors
     cant_find_flasher = False
-    plugged_in_backwards = False
+    not_plugged_in = False
 
     while True:
-        output = p.stdout.readline()
+        output = p.stdout.readline()  # stream line from msp430flasher executable
         if output == '' and p.poll() is not None:
             break
 
+        # remove new line character and return the line (the True indicates that this is a line of text)
         yield True, output[:-1]
 
+        # search for an error message and set flag true if found
         if output.startswith("* Couldn't find any connected USB FETs!"):
             fet_disconnected = True
         elif output.startswith("The system cannot find the") or output.startswith("'MSP430Flasher.exe' is not"):
             cant_find_flasher = True
         elif output.startswith("# ERROR: Could not find device"):
-            plugged_in_backwards = True
+            not_plugged_in = True
 
+    # return result
     if fet_disconnected:
         yield False, "Error: Please Connect USB And Try Again"
     elif cant_find_flasher:
         yield False, "Error: Please Install MSP430Flasher And Try Again"
-    elif plugged_in_backwards:
+    elif not_plugged_in:
         yield False, "Error: Please Check The Switch Controller/Launchpad Board Connection"
     else:
         yield False, "Success! Done Uploading"

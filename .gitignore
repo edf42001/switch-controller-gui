@@ -1,0 +1,11 @@
+# Executable distributions
+dist
+build
+SwitchControllerGUI.spec
+
+# Python Stuff
+.idea
+__pycache__
+
+# Crash Report
+crash_report.txt
