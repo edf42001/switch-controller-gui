@@ -250,6 +250,7 @@ __interrupt void Timer_A (void)
       else
       {
         Output = clear_output (Output);     // turn output off, select next out
+        State = Start_pulse;                // finished with OnState, clear
         _BIS_SR_IRQ(LPM4_bits);             // Wait for switch (VLO off)
       }
       break;
