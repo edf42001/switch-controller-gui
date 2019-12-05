@@ -36,7 +36,15 @@ class CustomMainWindow(QtWidgets.QMainWindow):
         path = os.path.join("Resources/Tutorials", item + ".pdf")
         path = os.path.abspath(path)  # find the corresponding pdf file
 
-        subprocess.Popen([path], shell=True)  # Open the PDF in a web browser
+        if os.path.exists(path):
+            subprocess.Popen([path], shell=True)  # Open the PDF in a web browser
+        else:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("Sorry, that help file wasn't found")
+            msg.setInformativeText("\"" + item + ".pdf\"")
+            msg.setWindowTitle("Oops")
+            msg.exec_()
 
     """ Functions below here are not activated by events happening in GUI"""
 
