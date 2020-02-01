@@ -20,7 +20,7 @@
    <enum>Qt::NoContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>Switch Controller Programmer</string>
+   <string>Replay For Kids Switch Controller Programmer</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -579,6 +579,7 @@ between tests of a closed switch in increments of ~100 milliseconds.</string>
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -588,52 +589,10 @@ between tests of a closed switch in increments of ~100 milliseconds.</string>
      <height>18</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <widget class="QMenu" name="menuWiring">
-     <property name="title">
-      <string>Wiring</string>
-     </property>
-     <addaction name="actionGeneral_2"/>
-     <addaction name="actionAdvanced_Info_2"/>
-     <addaction name="actionRound_Toy_Thing"/>
-    </widget>
-    <addaction name="actionGeneral"/>
-    <addaction name="menuWiring"/>
-   </widget>
-   <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionGeneral">
+  <action name="actionHello">
    <property name="text">
-    <string>Using This Program</string>
-   </property>
-  </action>
-  <action name="actionGeneral_2">
-   <property name="text">
-    <string>General Instructions</string>
-   </property>
-  </action>
-  <action name="actionRound_Toy_Thing">
-   <property name="text">
-    <string>Dance and Move BeatBo</string>
-   </property>
-  </action>
-  <action name="actionRoll_Along_Turtle">
-   <property name="text">
-    <string>Roll Along Turtle</string>
-   </property>
-  </action>
-  <action name="actionAdvanced_Info">
-   <property name="text">
-    <string>Advanced Info</string>
-   </property>
-  </action>
-  <action name="actionAdvanced_Info_2">
-   <property name="text">
-    <string>Advanced Info</string>
+    <string>Hello</string>
    </property>
   </action>
  </widget>

@@ -25,9 +25,10 @@ if __name__ == "__main__":
     MainWindow = CustomMainWindow()  # Create instance of the custom main window
     ui = Ui_SwitchControllerWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
 
     MainWindow.ui = ui  # Give the main window access to its ui
     MainWindow.store_defaults()  # Record the default values
+    MainWindow.create_help_menu_structure()
+    MainWindow.show()
 
     sys.exit(app.exec_())

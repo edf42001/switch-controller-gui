@@ -1,8 +1,9 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from CustomUploadFirmwareWindow import CustomUploadFirmwareWindow
 from GUIs.UploadFirmwareWindow import Ui_UploadFirmwareWindow
 import subprocess
 import os.path
+import glob
 
 
 class CustomMainWindow(QtWidgets.QMainWindow):
@@ -33,7 +34,7 @@ class CustomMainWindow(QtWidgets.QMainWindow):
 
     def menu_item_clicked(self, action):  # An option on the help menu pressed
         item = action.text()  # read the name
-        path = os.path.join("Resources/Tutorials", item + ".pdf")
+        path = action.data()  # Extract action data, which has been set to it's path
         path = os.path.abspath(path)  # find the corresponding pdf file
 
         if os.path.exists(path):
@@ -76,3 +77,33 @@ class CustomMainWindow(QtWidgets.QMainWindow):
         position = self.geometry()  # try to position the window over the current one
         self.upload_firmware_window.setGeometry(max(position.x()-50, 0), max(position.y()-100, 0), 1200, 600)
         self.upload_firmware_window.show()
+
+    def create_help_menu_structure(self, top_path=None, parent_menu=None):
+        if not top_path: # If called with no arguments start in default directory
+            self.create_help_menu_structure("Resources/Tutorials", self.ui.menubar)
+            return
+
+        top_path_name = os.path.basename(top_path)  # Get name of current directory
+
+        child_menu = QtWidgets.QMenu(parent_menu)  # Create new menu and set name
+        child_menu.setObjectName(top_path_name)
+        child_menu.setTitle(QtCore.QCoreApplication.translate("SwitchControllerWindow", top_path_name))
+
+        # Sort paths to be directories last because that is the order we want them in the menu
+        paths = sorted(glob.glob(os.path.join(top_path, "*")), key=os.path.isdir)
+
+        for path in paths:
+            if os.path.isdir(path):  # Recursively call this function to make menu
+                self.create_help_menu_structure(path, child_menu)
+            elif path.endswith(".pdf"):  # The tutorials are all pdfs
+                name = os.path.basename(path)[:-4]  # Extract name without ".pdf"
+
+                menu_button = QtWidgets.QAction(self)  # Create new menu button and give name
+                menu_button.setObjectName(name)
+                menu_button.setData(os.path.join(top_path, name + ".pdf"))  # Set data to the path to the file
+                                                                            # so the file can be opened later
+                menu_button.setText(QtCore.QCoreApplication.translate("SwitchControllerWindow", name))
+
+                child_menu.addAction(menu_button)  # Add button to the menu
+
+        parent_menu.addAction(child_menu.menuAction())  # Link menus
