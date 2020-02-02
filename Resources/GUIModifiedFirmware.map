@@ -1,0 +1,29 @@
+********************************************************************************
+MSP430 Hex Converter                                                    v18.12.2
+********************************************************************************
+
+INPUT FILE NAME: <ReplayForKidsTest.out>
+OUTPUT FORMAT:   Intel
+
+PHYSICAL MEMORY PARAMETERS
+   Default data width   :   8
+   Default memory width :   8
+   Default output width :   8
+
+
+OUTPUT TRANSLATION MAP
+--------------------------------------------------------------------------------
+00000000..000fffff  Page=0  Memory Width=8  ROM Width=8
+--------------------------------------------------------------------------------
+   OUTPUT FILES: ReplayForKidsTest.hex [b0..b7]
+
+   CONTENTS: 0000fc00..0000fedf   ReplayForKidsTest.out(.text)
+             0000fee0..0000feff   ReplayForKidsTest.out(.const)
+             0000ff00..0000ff09   ReplayForKidsTest.out(.cinit)
+             0000ffe4..0000ffe5   ReplayForKidsTest.out(PORT1)
+             0000ffe6..0000ffe7   ReplayForKidsTest.out(PORT2)
+             0000fff0..0000fff1   ReplayForKidsTest.out(TIMERA1)
+             0000fff2..0000fff3   ReplayForKidsTest.out(TIMERA0)
+             0000fff4..0000fff5   ReplayForKidsTest.out(WDT)
+             0000fffc..0000fffd   ReplayForKidsTest.out(NMI)
+             0000fffe..0000ffff   ReplayForKidsTest.out(.reset)

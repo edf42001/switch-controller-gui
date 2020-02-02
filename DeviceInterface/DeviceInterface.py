@@ -3,14 +3,27 @@ import os.path
 from DeviceInterface.exec_utils import subprocess_args, resource_path
 
 
-def modify_hex_firmware_file(values, start_row=23, start_col=9, length=16):
+def modify_hex_firmware_file(values, start_col=9, length=16):
     """ Function to modify the constant configuration values in a compiled hex file"""
 
-    filename = "Resources/GUIModifiedFirmware.hex"  # get file path
+    filename = "Resources/GUIModifiedFirmware.hex"  # get hex file path
+    map_filename = "Resources/GUIModifiedFirmware.map"  # get map file path
+
+    address = ""  # address where consts are stored
+
+    # Read where constants are stored in firmware
+    for line in open(map_filename, 'r'):
+        if ".const" in line:  # Look for line containing information
+            address = line.lstrip()[4:8].upper()  # extract the lower 4 hex characters of the address
 
     lines = []
-    for line in open(filename, 'r'):  # Read the file
-        lines.append(line)
+    start_row = -1
+    for i, line in enumerate(open(filename, 'r')):  # Read the file
+        lines.append(line)  # store the lines
+        if line.startswith(address, 3):  # find the line with the consts
+            start_row = i
+
+    assert start_row >= 0, "Error: could not find row in firmware file with .consts"
 
     # Convert the configuration values to hex and combine them in a string
     consts = ""
