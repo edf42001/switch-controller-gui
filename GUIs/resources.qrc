@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="Images">
-    <file>Images/favicon.ico</file>
+    <file>Images/RFK_logo_ONE-LINE_med.png</file>
     <file>Images/LaunchpadSwitchController.jpg</file>
+    <file>Images/Bear.ico</file>
   </qresource>
 </RCC>
