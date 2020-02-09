@@ -7,3 +7,5 @@ The Switch Controller GUI was programmed with PyQT5 and the QT Designer. You can
 To edit the program, open the _.ui_ files found in the _GUIs_ folder in QT Designer. When ready to convert the ui to python code, run the _ConvertToPython.bat_ file. (Note: You will probably need to edit this file to point to the location of the pyuic5 and pyrrc5 scripts installed with PyQT5 on your computer). Running this script will create _MainWindow.py_, _UploadFirmwareWindow.py_, and _resources_rc.py_, which should not be edited.
 
 To build the executable, I used Pyinstaller, which can be installed with `pip install pyinstaller`. To build the exe simply run _BuildEXE.bat_, which may also have to be modified if pyinstaller is not in your system PATH.
+
+To edit the firmware uploaded to the microcontroller, first make you code changes in your IDE. Have your IDE create an Intel HEX firmware file named _GUIModifiedFirmware.hex_, and also have it create the associated .map file _GUIModifiedFirmware.map_. Move both of these files to the _Resources_ folder so the GUI can upload the new firmware.
